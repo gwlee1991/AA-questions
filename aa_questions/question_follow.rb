@@ -8,7 +8,7 @@ class QuestionFollow
       FROM question_follows
       WHERE id = ?
     SQL
-    data.map {|datum| self.new(datum)}
+    data.map { |datum| self.new(datum) }
   end
 
   def initialize(options = {})

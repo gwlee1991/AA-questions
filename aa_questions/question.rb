@@ -8,7 +8,7 @@ class Question
       FROM questions
       WHERE id = ?
     SQL
-    data.map {|datum| self.new(datum)}
+    data.map { |datum| self.new(datum) }
   end
 
   def self.find_by_user_id(user_id)
@@ -17,7 +17,7 @@ class Question
     FROM questions
     WHERE user_id = ?
     SQL
-    data.map {|datum| self.new(datum)}
+    data.map { |datum| self.new(datum) }
   end
 
   def initialize(options = {})
@@ -25,5 +25,13 @@ class Question
     @title = options['title']
     @body = options['body']
     @user_id = options['user_id']
+  end
+
+  def author
+    User.find_by_id(user_id)
+  end
+
+  def replies
+    Reply.find_by_question_id(@id)
   end
 end

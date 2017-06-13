@@ -8,7 +8,7 @@ class QuestionLike
       FROM question_likes
       WHERE id = ?
     SQL
-    data.map {|datum| self.new(datum)}
+    data.map { |datum| self.new(datum) }
   end
 
   def initialize(options = {})
